@@ -9,3 +9,9 @@ networkx
 matplotlib
 paramiko
 pygame
+ray==2.0.0
+dm_tree
+pandas
+tabulate
+scikit-image
+tensorflow

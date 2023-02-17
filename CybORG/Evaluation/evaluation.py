@@ -10,6 +10,17 @@ from datetime import datetime
 # this imports a submissions agents
 from CybORG.Evaluation.submission.submission import agents, wrap
 
+from CybORG.Agents.Wrappers.CommsPettingZooParallelWrapper import ObsCommsPettingZooParallelWrapper
+from ray.rllib.env import ParallelPettingZooEnv
+from ray.tune import register_env
+
+def env_creator_CC3(env_config: dict):
+    sg = DroneSwarmScenarioGenerator()
+    cyborg = CybORG(scenario_generator=sg, environment='sim')
+    env = ParallelPettingZooEnv(ObsCommsPettingZooParallelWrapper(env=cyborg))
+    return env
+    
+register_env(name="CC3", env_creator=env_creator_CC3)
 
 def run_evaluation(name, team, name_of_agent, max_eps, write_to_file=True):
 

@@ -13,6 +13,7 @@ RUN pip install -e .
 
 # Example of adding additional instructions
 # RUN pip install stable_baselines3
+RUN pip install -r Requirements.txt
 
 # Run evaluation script
 ENTRYPOINT ["python", "/cage/CybORG/Evaluation/validation.py"]
